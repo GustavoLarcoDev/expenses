@@ -1,3 +1,10 @@
 from django.shortcuts import render
+from receipts.models import Receipt
 
-# Create your views here.
+
+def Home(request):
+    receipts = Receipt.objects.all()
+    context = {
+        "receipts_object": receipts
+    }
+    return render(request, "receipts/ReceiptList.html", context)
