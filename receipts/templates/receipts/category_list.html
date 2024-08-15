@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}My Receipts{% endblock title %}
+{% block content %}
+<h1>My Receipts</h1>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Number of Receipts</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for category in category_list %}
+        <tr>
+            <td>{{ category.name }}</td>
+            <td>{{ category.owner }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="2">No receipts found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
+
