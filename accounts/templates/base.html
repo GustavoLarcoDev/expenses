@@ -1,9 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Welcome{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/static.css' %}">
 </head>
 <body>
     <header>
@@ -11,6 +12,13 @@
             <ul>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'create_receipt' %}">Create Receipt</a></li>
+                <li><a href="{% url 'category_list' %}">Categories</a></li>
+                <li><a href="{% url 'account_list' %}">Accounts</a></li>
+                <li><a href="{% url 'home' %}">My Receipts</a></li>
+                <li><a href="{% url 'create_category' %}">Create Category</a></li>
+                <li><a href="{% url 'create_account' %}">Create Account</a></li>
                 {% else %}
                 <li><a href="{% url 'signup' %}">Sign Up</a></li>
                 <li><a href="{% url 'login' %}">Login</a></li>
@@ -18,8 +26,7 @@
             </ul>
         </nav>
     </header>
-    <main>
-        {% block content %}{% endblock content %}
-    </main>
+    {% block content %}
+    {% endblock content %}
 </body>
 </html>
